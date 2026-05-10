@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TCP Commerce | AI Readiness Intelligence Brief — Epoch Frameworks LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,500&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --periwinkle: #8e9fd5;
+    --periwinkle-2: #b8c3ef;
+    --periwinkle-3: #dfe5fb;
+    --charcoal: #24282f;
+    --charcoal-2: #343b46;
+    --charcoal-3: #596170;
+    --ink: #151922;
+    --cream: #f6f2e8;
+    --paper: #fbfaf6;
+    --white: #ffffff;
+    --green: #2d7a5f;
+    --red: #a33030;
+    --amber: #c9922a;
+    --blue: #5068b8;
+    --line: rgba(36, 40, 47, 0.12);
+    --line-strong: rgba(142, 159, 213, 0.42);
+    --shadow: 0 24px 70px rgba(21, 25, 34, 0.12);
+    --shadow-soft: 0 12px 35px rgba(21, 25, 34, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(142,159,213,0.22), transparent 28%),
+      radial-gradient(circle at 88% 12%, rgba(201,146,42,0.09), transparent 30%),
+      linear-gradient(180deg, #fbfaf6 0%, #f5f2eb 48%, #ebeef8 100%);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(36,40,47,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(36,40,47,0.055) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent 88%);
+  }
+
+  a { color: inherit; }
+  .page-shell { position: relative; z-index: 2; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(18px);
+    background: rgba(36,40,47,0.88);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    color: white;
+  }
+
+  .topbar-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: max-content;
+  }
+
+  .mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--periwinkle), #6578bf);
+    color: white;
+    font-family: JetBrains Mono, monospace;
+    font-weight: 800;
+    letter-spacing: -0.08em;
+    box-shadow: 0 10px 24px rgba(142,159,213,0.25);
+  }
+
+  .brand-copy strong {
+    display: block;
+    font-family: JetBrains Mono, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .brand-copy span {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.48);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.58);
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav a {
+    text-decoration: none;
+    padding: 9px 10px;
+    border-radius: 999px;
+    transition: 0.2s ease;
+  }
+
+  .nav a:hover { background: rgba(255,255,255,0.08); color: white; }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 86px 28px 44px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 52px;
+    align-items: center;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .badge {
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    background: rgba(255,255,255,0.72);
+    color: var(--blue);
+    border-radius: 999px;
+    padding: 8px 10px;
+  }
+
+  .badge.dark { background: var(--charcoal); color: var(--periwinkle-2); border-color: rgba(255,255,255,0.12); }
+
+  h1 {
+    font-family: Crimson Pro, Georgia, serif;
+    font-size: clamp(54px, 7vw, 92px);
+    line-height: 0.93;
+    letter-spacing: -0.05em;
+    color: var(--ink);
+    max-width: 790px;
+  }
+
+  h1 em { color: var(--blue); font-style: italic; }
+
+  .hero-copy {
+    margin-top: 28px;
+    max-width: 650px;
+    color: var(--charcoal-3);
+    font-size: 17px;
+    line-height: 1.78;
+  }
+
+  .hero-actions {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: 14px;
+    font-family: JetBrains Mono, monospace;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: 0.2s ease;
+  }
+
+  .btn.primary { background: var(--charcoal); color: white; box-shadow: var(--shadow-soft); }
+  .btn.secondary { background: rgba(255,255,255,0.72); color: var(--charcoal); border-color: var(--line); }
+  .btn:hover { transform: translateY(-2px); }
+
+  .hero-panel {
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(255,255,255,0.66);
+    box-shadow: var(--shadow);
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .panel-top {
+    background: var(--charcoal);
+    color: white;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .panel-top span {
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.54);
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 8px rgba(201,146,42,0.14);
+  }
+
+  .score-ring-wrap {
+    padding: 36px;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .score-ring {
+    width: 236px;
+    height: 236px;
+    border-radius: 50%;
+    background: conic-gradient(var(--periwinkle) 0 234deg, rgba(36,40,47,0.08) 234deg 360deg);
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .score-ring::after {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .score-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .score-inner .number {
+    font-family: Bebas Neue, sans-serif;
+    font-size: 78px;
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+
+  .score-inner .label {
+    margin-top: 8px;
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--charcoal-3);
+    text-transform: uppercase;
+  }
+
+  .mini-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line);
+  }
+
+  .mini-metric {
+    padding: 18px 14px;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+
+  .mini-metric:last-child { border-right: none; }
+  .mini-metric strong {
+    display: block;
+    font-family: Bebas Neue, sans-serif;
+    font-size: 31px;
+    letter-spacing: 0.02em;
+    color: var(--charcoal);
+  }
+  .mini-metric span {
+    display: block;
+    margin-top: 4px;
+    font-family: JetBrains Mono, monospace;
+    font-size: 9px;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal-3);
+  }
+
+  section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 54px 28px;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 28px;
+    margin-bottom: 26px;
+  }
+
+  .eyebrow {
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: Crimson Pro, Georgia, serif;
+    font-size: clamp(34px, 4vw, 54px);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+  }
+
+  .section-note {
+    max-width: 420px;
+    color: var(--charcoal-3);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .signal-card, .glass-card {
+    background: rgba(255,255,255,0.76);
+    border: 1px solid rgba(255,255,255,0.76);
+    box-shadow: var(--shadow-soft);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .signal-card {
+    min-height: 290px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .signal-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+  }
+  .signal-card.green::before { background: var(--green); }
+  .signal-card.red::before { background: var(--red); }
+  .signal-card.amber::before { background: var(--amber); }
+
+  .card-kicker {
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--charcoal-3);
+  }
+
+  .signal-card h3 {
+    margin-top: 22px;
+    font-size: 21px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .signal-card p {
+    margin-top: 14px;
+    color: var(--charcoal-3);
+    line-height: 1.68;
+    font-size: 14px;
+  }
+
+  .card-footer {
+    margin-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+
+  .readiness {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 18px;
+  }
+
+  .summary-card {
+    padding: 28px;
+  }
+
+  .summary-card h3 {
+    font-family: Crimson Pro, Georgia, serif;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+
+  .summary-card p {
+    margin-top: 14px;
+    color: var(--charcoal-3);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .verdict {
+    margin-top: 24px;
+    border: 1px solid rgba(201,146,42,0.28);
+    background: rgba(201,146,42,0.08);
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .verdict strong {
+    display: block;
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .verdict span {
+    display: block;
+    margin-top: 8px;
+    color: var(--charcoal-2);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .dimension-stack {
+    padding: 28px;
+  }
+
+  .dimension {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dimension:first-child { padding-top: 0; }
+  .dimension:last-child { border-bottom: 0; padding-bottom: 0; }
+
+  .dim-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .dim-row strong { font-size: 14px; color: var(--ink); }
+  .dim-row span {
+    font-family: JetBrains Mono, monospace;
+    font-size: 11px;
+    color: var(--charcoal-3);
+  }
+
+  .bar {
+    height: 9px;
+    background: rgba(36,40,47,0.08);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--periwinkle), var(--blue));
+    width: var(--w);
+    animation: barIn 1.2s cubic-bezier(0.4,0,0.2,1) both;
+    transform-origin: left;
+  }
+
+  .fill.red { background: linear-gradient(90deg, #d88, var(--red)); }
+  @keyframes barIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .opportunity-map {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+  }
+
+  .opp-card {
+    grid-column: span 4;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(255,255,255,0.78);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--shadow-soft);
+    min-height: 230px;
+  }
+
+  .opp-card.wide { grid-column: span 8; background: var(--charcoal); color: white; }
+
+  .opp-number {
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .opp-card.wide .opp-number { color: var(--periwinkle-2); }
+
+  .opp-card h3 {
+    margin-top: 16px;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .opp-card.wide h3 { color: white; font-family: Crimson Pro, Georgia, serif; font-size: 42px; }
+
+  .opp-card p {
+    margin-top: 12px;
+    color: var(--charcoal-3);
+    font-size: 14px;
+    line-height: 1.68;
+  }
+
+  .opp-card.wide p { color: rgba(255,255,255,0.62); max-width: 620px; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag {
+    font-family: JetBrains Mono, monospace;
+    font-size: 9px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 7px 9px;
+    border-radius: 999px;
+    color: var(--blue);
+    background: rgba(142,159,213,0.14);
+    border: 1px solid rgba(142,159,213,0.28);
+  }
+
+  .opp-card.wide .tag { color: var(--periwinkle-2); background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.1); }
+
+  .timeline {
+    background: var(--charcoal);
+    color: white;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: rgba(142,159,213,0.15);
+  }
+
+  .timeline-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 26px;
+  }
+
+  .timeline-step {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .timeline-step strong {
+    display: block;
+    color: var(--periwinkle-2);
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .timeline-step h3 {
+    margin-top: 14px;
+    font-size: 19px;
+    line-height: 1.15;
+  }
+
+  .timeline-step p {
+    margin-top: 10px;
+    color: rgba(255,255,255,0.58);
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
+  .closing {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 28px;
+    align-items: center;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: var(--shadow);
+    border-radius: 28px;
+    padding: 34px;
+  }
+
+  .closing h2 { max-width: 760px; }
+  .closing p {
+    margin-top: 14px;
+    max-width: 680px;
+    color: var(--charcoal-3);
+    line-height: 1.68;
+    font-size: 15px;
+  }
+
+  footer {
+    margin-top: 38px;
+    background: var(--charcoal);
+    color: white;
+  }
+
+  .footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 30px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-inner strong {
+    display: block;
+    font-family: JetBrains Mono, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .footer-inner span {
+    display: block;
+    margin-top: 5px;
+    color: rgba(255,255,255,0.4);
+    font-family: JetBrains Mono, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    line-height: 1.55;
+  }
+
+  .reveal { opacity: 0; transform: translateY(18px); animation: reveal 0.75s ease forwards; }
+  .d1 { animation-delay: 0.1s; }
+  .d2 { animation-delay: 0.2s; }
+  .d3 { animation-delay: 0.3s; }
+  .d4 { animation-delay: 0.4s; }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 920px) {
+    .nav { display: none; }
+    .hero, .readiness, .closing { grid-template-columns: 1fr; }
+    .signal-grid, .timeline-grid { grid-template-columns: 1fr; }
+    .opp-card, .opp-card.wide { grid-column: span 12; }
+    .section-head { display: block; }
+    .section-note { margin-top: 14px; }
+  }
+
+  @media (max-width: 560px) {
+    .topbar-inner, .hero, section, .footer-inner { padding-left: 18px; padding-right: 18px; }
+    h1 { font-size: 54px; }
+    .hero { padding-top: 54px; }
+    .mini-metrics { grid-template-columns: 1fr; }
+    .mini-metric { border-right: none; border-bottom: 1px solid var(--line); }
+    .mini-metric:last-child { border-bottom: none; }
+    .timeline, .closing { padding: 24px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="mark">EF</div>
+        <div class="brand-copy">
+          <strong>Epoch Frameworks LLC</strong>
+          <span>AI Adoption Architecture · Fort Worth, TX</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Page navigation">
+        <a href="#signals">Signals</a>
+        <a href="#readiness">Readiness</a>
+        <a href="#opportunity">Opportunity</a>
+        <a href="#sprint">Sprint Path</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="badge-row reveal">
+          <span class="badge dark">Confidential Preview</span>
+          <span class="badge">External Signal Layer Only</span>
+          <span class="badge">MOC v4.6 + ESIL</span>
+        </div>
+        <h1 class="reveal d1">TCP Commerce has <em>five untouched</em> AI leverage points.</h1>
+        <p class="hero-copy reveal d2">This executive brief translates public-facing signals into an AI readiness view. The purpose is not to overclaim. The purpose is to show where a diagnostic could expose workflow gaps, margin leakage, competitive pressure, and near-term automation opportunities.</p>
+        <div class="hero-actions reveal d3">
+          <a class="btn primary" href="mailto:erwin.mcdonald@outlook.com?subject=TCP Commerce AI Readiness Diagnostic">Request Diagnostic Conversation</a>
+          <a class="btn secondary" href="#opportunity">View Opportunity Surface</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel reveal d2" aria-label="AI readiness score panel">
+        <div class="panel-top">
+          <span>AI Readiness Intelligence Brief</span>
+          <div class="status-dot" title="Conditional pursue"></div>
+        </div>
+        <div class="score-ring-wrap">
+          <div class="score-ring">
+            <div class="score-inner">
+              <div class="number" id="scoreNum">65</div>
+              <div class="label">External Score</div>
+            </div>
+          </div>
+        </div>
+        <div class="mini-metrics">
+          <div class="mini-metric"><strong>5+</strong><span>Years of operating data</span></div>
+          <div class="mini-metric"><strong>18</strong><span>Visible AI adoption score</span></div>
+          <div class="mini-metric"><strong>5</strong><span>Initial leverage points</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="signals">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 · Signal Read</p>
+          <h2>What the outside signals suggest.</h2>
+        </div>
+        <p class="section-note">This section keeps the claim level disciplined. It separates opportunity, exposure, and market pressure without presenting external research as internal truth.</p>
+      </div>
+
+      <div class="signal-grid">
+        <article class="signal-card green reveal">
+          <div>
+            <span class="card-kicker">Opportunity</span>
+            <h3>Operational history can become intelligence infrastructure.</h3>
+            <p>TCP Commerce appears to have years of marketplace operating context. That history may contain patterns around listing performance, seasonality, category behavior, pricing movement, and client friction.</p>
+          </div>
+          <div class="card-footer"><span>Data asset richness</span><span>68 / 100</span></div>
+        </article>
+
+        <article class="signal-card red reveal d1">
+          <div>
+            <span class="card-kicker">Exposure</span>
+            <h3>No visible AI layer in the public-facing stack.</h3>
+            <p>The current public footprint does not clearly signal AI-supported listing optimization, competitor monitoring, client reporting automation, or predictive account management.</p>
+          </div>
+          <div class="card-footer"><span>Current adoption</span><span>18 / 100</span></div>
+        </article>
+
+        <article class="signal-card amber reveal d2">
+          <div>
+            <span class="card-kicker">Watch</span>
+            <h3>Marketplace AI is compressing differentiation windows.</h3>
+            <p>Managed service firms that rely only on execution risk being compared against AI-native workflows. The next advantage is not more activity. It is better intelligence per account.</p>
+          </div>
+          <div class="card-footer"><span>Competitive pressure</span><span>79 / 100</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="readiness">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 · Readiness Assessment</p>
+          <h2>Strong upside, incomplete visibility.</h2>
+        </div>
+        <p class="section-note">The score is intentionally conditional because this brief is built from external signals. Internal workflow access would likely raise or lower the score materially.</p>
+      </div>
+
+      <div class="readiness">
+        <article class="glass-card summary-card reveal">
+          <h3>Conditional pursue.</h3>
+          <p>TCP Commerce appears to have enough operating history, marketplace surface area, and service complexity to justify a structured AI readiness diagnostic. The biggest visible gap is not capability. It is the absence of a clearly articulated AI intelligence layer.</p>
+          <div class="verdict">
+            <strong>Executive Interpretation</strong>
+            <span>The opportunity is credible, but the next step should be diagnostic validation, not a premature implementation promise.</span>
+          </div>
+        </article>
+
+        <article class="glass-card dimension-stack reveal d1">
+          <div class="dimension">
+            <div class="dim-row"><strong>Operational Maturity</strong><span>72 / 100</span></div>
+            <div class="bar"><div class="fill" style="--w:72%"></div></div>
+          </div>
+          <div class="dimension">
+            <div class="dim-row"><strong>Data Asset Richness</strong><span>68 / 100</span></div>
+            <div class="bar"><div class="fill" style="--w:68%"></div></div>
+          </div>
+          <div class="dimension">
+            <div class="dim-row"><strong>Workflow AI Surface Area</strong><span>81 / 100</span></div>
+            <div class="bar"><div class="fill" style="--w:81%"></div></div>
+          </div>
+          <div class="dimension">
+            <div class="dim-row"><strong>Competitive Exposure</strong><span>79 / 100</span></div>
+            <div class="bar"><div class="fill" style="--w:79%"></div></div>
+          </div>
+          <div class="dimension">
+            <div class="dim-row"><strong>Current Visible AI Adoption</strong><span>18 / 100</span></div>
+            <div class="bar"><div class="fill red" style="--w:18%"></div></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="opportunity">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">03 · Opportunity Surface</p>
+          <h2>Five leverage points worth validating.</h2>
+        </div>
+        <p class="section-note">These are not implementation guarantees. They are diagnostic hypotheses designed to earn a working conversation.</p>
+      </div>
+
+      <div class="opportunity-map">
+        <article class="opp-card reveal">
+          <span class="opp-number">01 · High Impact</span>
+          <h3>Listing Intelligence Automation</h3>
+          <p>Generate stronger product copy, keyword positioning, and optimization prompts across client catalogs.</p>
+          <div class="tag-row"><span class="tag">Conversion</span><span class="tag">Catalog Ops</span></div>
+        </article>
+
+        <article class="opp-card reveal d1">
+          <span class="opp-number">02 · High Impact</span>
+          <h3>Competitive Signal Monitoring</h3>
+          <p>Monitor pricing movement, listing changes, category shifts, and buy-box dynamics as decision-ready intelligence.</p>
+          <div class="tag-row"><span class="tag">Market Signals</span><span class="tag">Pricing</span></div>
+        </article>
+
+        <article class="opp-card reveal d2">
+          <span class="opp-number">03 · Medium Impact</span>
+          <h3>Client Reporting Automation</h3>
+          <p>Turn account data into insight narratives that reduce analyst hours and improve client communication quality.</p>
+          <div class="tag-row"><span class="tag">Reporting</span><span class="tag">Client Value</span></div>
+        </article>
+
+        <article class="opp-card reveal">
+          <span class="opp-number">04 · High Impact</span>
+          <h3>Demand Forecasting Layer</h3>
+          <p>Surface inventory risk, seasonality, stockout exposure, and overstock warning signals earlier in the workflow.</p>
+          <div class="tag-row"><span class="tag">Forecasting</span><span class="tag">FBA Risk</span></div>
+        </article>
+
+        <article class="opp-card reveal d1">
+          <span class="opp-number">05 · Strategic</span>
+          <h3>AI-Powered Service Differentiation</h3>
+          <p>Move the value proposition from marketplace support to intelligence-enabled e-commerce operations.</p>
+          <div class="tag-row"><span class="tag">Positioning</span><span class="tag">Pricing Power</span></div>
+        </article>
+
+        <article class="opp-card wide reveal d2">
+          <span class="opp-number">Gated · Requires Engagement</span>
+          <h3>The full map lives behind the diagnostic.</h3>
+          <p>The working engagement would validate the internal workflows, identify where human effort is being spent, define which AI use cases create measurable movement, and prioritize the roadmap by operational value rather than hype.</p>
+          <div class="tag-row"><span class="tag">Workflow Capture</span><span class="tag">Risk Scoring</span><span class="tag">Roadmap</span><span class="tag">Quick Wins</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sprint">
+      <div class="timeline reveal">
+        <p class="eyebrow">04 · Sprint Path</p>
+        <h2 style="color:white; max-width:760px;">A disciplined path from signal to implementation.</h2>
+        <div class="timeline-grid">
+          <div class="timeline-step">
+            <strong>Sprint 1</strong>
+            <h3>AI Readiness Diagnostic</h3>
+            <p>Capture workflows, data surfaces, manual effort, client reporting patterns, and governance constraints.</p>
+          </div>
+          <div class="timeline-step">
+            <strong>Sprint 2</strong>
+            <h3>Opportunity Prioritization</h3>
+            <p>Rank use cases by value, feasibility, risk, stakeholder adoption, and speed to operational movement.</p>
+          </div>
+          <div class="timeline-step">
+            <strong>Sprint 3</strong>
+            <h3>AI Service Layer Architecture</h3>
+            <p>Define the client-facing intelligence layer, internal operating model, and measurable adoption roadmap.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="closing reveal">
+        <div>
+          <p class="eyebrow">Executive Close</p>
+          <h2>This is not an AI sales pitch. It is a diagnostic invitation.</h2>
+          <p>Epoch Frameworks would begin by validating where the actual operational friction exists, where the data is usable, and where AI can create visible movement without disrupting the business model.</p>
+        </div>
+        <a class="btn primary" href="mailto:erwin.mcdonald@outlook.com?subject=TCP Commerce AI Readiness Diagnostic">Start Conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>Epoch Frameworks LLC</strong>
+        <span>DACR License v2.6 · McDonald 2026 · Proprietary framework methodology</span>
+      </div>
+      <div>
+        <span>MOC v4.6 + ESIL v1.0<br>External Signal Layer Only<br>Internal diagnostic required for full intelligence</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const score = document.getElementById('scoreNum');
+  let started = false;
+  function animateScore() {
+    if (started) return;
+    started = true;
+    const target = 65;
+    const duration = 1100;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - elapsed, 3);
+      score.textContent = Math.round(target * eased);
+      if (elapsed < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  window.addEventListener('load', animateScore);
+</script>
+</body>
+</html>
