@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCP Commerce — Agent Intelligence Brief | Epoch Frameworks LLC</title>
+  <meta name="description" content="A high-performance external signal analysis of AI agent opportunities for TCP Commerce, prepared by Epoch Frameworks LLC." />
+  <meta property="og:title" content="TCP Commerce — Agent Intelligence Brief" />
+  <meta property="og:description" content="Five agent scenarios for intelligence-enabled commerce operations. Epoch Frameworks LLC." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #05060A;
+      --black-2: #090B12;
+      --black-3: #111522;
+      --white: #F7F8F4;
+      --muted: rgba(247,248,244,0.64);
+      --dim: rgba(247,248,244,0.34);
+      --line: rgba(255,255,255,0.10);
+      --line-strong: rgba(255,255,255,0.18);
+
+      --lime: #D9FF3F;
+      --volt: #F8FF6A;
+      --teal: #00E0A4;
+      --blue: #00A3FF;
+      --orange: #FF8A1D;
+      --pink: #FF3F8E;
+      --purple: #8C5CFF;
+      --red: #FF3B3B;
+
+      --glow-lime: rgba(217,255,63,0.28);
+      --glow-teal: rgba(0,224,164,0.25);
+      --glow-orange: rgba(255,138,29,0.22);
+
+      --mono: 'JetBrains Mono', monospace;
+      --display: 'Bebas Neue', sans-serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 14% 10%, rgba(217,255,63,0.20), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(0,224,164,0.17), transparent 30%),
+        radial-gradient(circle at 72% 82%, rgba(255,63,142,0.12), transparent 32%),
+        linear-gradient(135deg, #05060A 0%, #09111B 42%, #06120F 100%);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.042) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.042) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 88%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.018) 2px, rgba(255,255,255,0.018) 4px);
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    a { color: inherit; }
+
+    .shell { position: relative; z-index: 2; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 58px;
+      padding: 0 28px;
+      background: rgba(5,6,10,0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--lime), var(--teal));
+      color: var(--black);
+      display: grid;
+      place-items: center;
+      font-family: var(--mono);
+      font-weight: 800;
+      letter-spacing: -0.1em;
+      box-shadow: 0 0 28px var(--glow-lime);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 2px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--lime), var(--teal));
+      color: var(--black);
+      text-decoration: none;
+      box-shadow: 0 0 24px rgba(217,255,63,0.20);
+      transition: 0.2s ease;
+    }
+
+    .nav-cta:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 88px 28px 54px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 34px;
+      height: 2px;
+      background: var(--lime);
+      box-shadow: 0 0 18px var(--glow-lime);
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(74px, 10vw, 142px);
+      line-height: 0.78;
+      letter-spacing: 0.012em;
+      text-transform: uppercase;
+      color: var(--white);
+      max-width: 760px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, var(--lime), var(--teal), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 22px rgba(217,255,63,0.14));
+    }
+
+    .hero-sub {
+      margin-top: 24px;
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.76;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.11);
+      color: var(--muted);
+    }
+
+    .badge.hot {
+      background: rgba(217,255,63,0.10);
+      border-color: rgba(217,255,63,0.30);
+      color: var(--volt);
+    }
+
+    .metric-can {
+      background:
+        radial-gradient(circle at 28% 12%, rgba(217,255,63,0.20), transparent 28%),
+        linear-gradient(155deg, rgba(19,24,36,0.98), rgba(4,6,10,0.98));
+      border: 1px solid rgba(217,255,63,0.30);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 32px 90px rgba(0,0,0,0.45), 0 0 80px rgba(217,255,63,0.08);
+      position: relative;
+      min-height: 560px;
+    }
+
+    .metric-can::before {
+      content: 'AGENT STACK';
+      position: absolute;
+      right: -52px;
+      top: 170px;
+      transform: rotate(90deg);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.34em;
+      color: rgba(217,255,63,0.22);
+      z-index: 2;
+    }
+
+    .metric-can::after {
+      content: '';
+      position: absolute;
+      inset: auto -140px -160px auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,224,164,0.20), transparent 66%);
+      z-index: 1;
+    }
+
+    .can-top {
+      padding: 24px 24px 18px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .can-top span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .live-dot::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--teal);
+      box-shadow: 0 0 16px var(--glow-teal);
+      animation: pulse 1.8s ease infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.45;transform:scale(.75)} }
+
+    .can-hero {
+      padding: 34px 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .can-score {
+      font-family: var(--display);
+      font-size: 116px;
+      line-height: 0.82;
+      color: var(--lime);
+      text-shadow: 0 0 34px rgba(217,255,63,0.22);
+    }
+
+    .can-label {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .can-copy {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.66;
+      max-width: 430px;
+    }
+
+    .performance-bars {
+      margin-top: 26px;
+      display: grid;
+      gap: 12px;
+      max-width: 430px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 145px 1fr 42px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .bar-row span {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.09);
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--lime), var(--teal));
+      box-shadow: 0 0 18px var(--glow-lime);
+      transform-origin: left;
+      animation: barIn 1.2s ease both;
+    }
+
+    @keyframes barIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    .mini-stat-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-stat {
+      background: rgba(5,6,10,0.72);
+      padding: 20px 14px;
+      text-align: center;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-family: var(--display);
+      font-size: 42px;
+      line-height: 0.82;
+      color: var(--teal);
+    }
+
+    .mini-stat span {
+      display: block;
+      margin-top: 8px;
+      font-family: var(--mono);
+      font-size: 8px;
+      line-height: 1.45;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin: 56px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(217,255,63,0.32), transparent);
+    }
+
+    .frame-quote {
+      background:
+        linear-gradient(135deg, rgba(217,255,63,0.12), rgba(0,224,164,0.08), rgba(5,6,10,0.92));
+      border: 1px solid rgba(217,255,63,0.24);
+      border-left: 5px solid var(--lime);
+      border-radius: 22px;
+      padding: 28px 30px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.22);
+    }
+
+    .frame-quote p {
+      font-size: clamp(21px, 3vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.055em;
+      line-height: 1.1;
+      color: var(--white);
+      max-width: 980px;
+    }
+
+    .agent-list {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .agent-card {
+      grid-column: span 6;
+      background:
+        radial-gradient(circle at 20% 0%, var(--cardGlow), transparent 34%),
+        linear-gradient(180deg, rgba(19,24,36,0.96), rgba(5,6,10,0.96));
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: 0.22s ease;
+      min-height: 330px;
+      position: relative;
+    }
+
+    .agent-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cardColor);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.25), 0 0 52px var(--cardGlow);
+    }
+
+    .agent-card.open {
+      grid-column: span 12;
+      border-color: var(--cardColor);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.32), 0 0 56px var(--cardGlow);
+    }
+
+    .agent-card::after {
+      content: '';
+      position: absolute;
+      right: -90px;
+      bottom: -110px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--cardGlow), transparent 68%);
+      pointer-events: none;
+    }
+
+    .agent-trigger {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: auto 56px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 24px;
+      cursor: pointer;
+      user-select: none;
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      color: var(--white);
+    }
+
+    .agent-num {
+      font-family: var(--display);
+      font-size: 44px;
+      line-height: 0.82;
+      color: var(--cardColor);
+    }
+
+    .agent-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      flex-shrink: 0;
+      background: var(--cardBg);
+      color: var(--cardColor);
+      box-shadow: 0 0 28px var(--cardGlow);
+    }
+
+    .agent-name {
+      font-size: 21px;
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 7px;
+      color: var(--white);
+    }
+
+    .agent-tagline {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .agent-chev {
+      font-size: 16px;
+      color: var(--dim);
+      transition: transform 0.25s;
+    }
+
+    .agent-card.open .agent-chev { transform: rotate(180deg); }
+
+    .agent-body {
+      position: relative;
+      z-index: 2;
+      display: none;
+      padding: 0 24px 26px 96px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .agent-card.open .agent-body { display: block; animation: bodyReveal .28s ease both; }
+    @keyframes bodyReveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .entry-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+      border-radius: 999px;
+      margin-top: 18px;
+      margin-bottom: 4px;
+      background: var(--cardBg);
+      color: var(--cardColor);
+      border: 1px solid var(--cardColor);
+    }
+
+    .body-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin: 20px 0 8px;
+    }
+
+    .body-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 880px;
+    }
+
+    .cap-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .cap-pill {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      font-weight: 600;
+    }
+
+    .q-block {
+      margin-top: 12px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-left: 4px solid var(--cardColor);
+    }
+
+    .q-sublabel {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+      color: var(--cardColor);
+    }
+
+    .q-text {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .sprint-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .sprint-card {
+      background: linear-gradient(180deg, rgba(19,24,36,0.96), rgba(5,6,10,0.95));
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sprint-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--lime), var(--teal), var(--blue));
+    }
+
+    .sprint-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 14px;
+    }
+
+    .sprint-name {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .sprint-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .philosophy-block {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,138,29,0.12), transparent 30%),
+        linear-gradient(135deg, rgba(217,255,63,0.10), rgba(0,224,164,0.07), rgba(5,6,10,0.96));
+      border: 1px solid rgba(217,255,63,0.22);
+      border-radius: 26px;
+      padding: 32px;
+      margin-bottom: 20px;
+    }
+
+    .philosophy-block p {
+      font-size: 18px;
+      line-height: 1.68;
+      color: var(--muted);
+      max-width: 1000px;
+    }
+
+    .philosophy-block strong { color: var(--white); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--dim);
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .footer-left span { color: var(--lime); }
+
+    .footer-right {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: color 0.15s;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .footer-link:hover { color: var(--lime); border-color: rgba(217,255,63,0.28); }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,255,63,0.32), transparent);
+      margin: 36px 0 18px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp .75s ease forwards;
+    }
+
+    .d1 { animation-delay: .08s; }
+    .d2 { animation-delay: .16s; }
+    .d3 { animation-delay: .24s; }
+    .d4 { animation-delay: .32s; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .metric-can { min-height: auto; }
+      .agent-card, .agent-card.open { grid-column: span 12; }
+      .sprint-grid { grid-template-columns: 1fr; }
+      .agent-body { padding-left: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 16px; }
+      .brand-copy span { display: none; }
+      .nav-cta { font-size: 9px; padding: 9px 11px; }
+      .hero { padding: 54px 18px 36px; }
+      .section-wrap { padding: 0 18px; }
+      .hero-title { font-size: 74px; }
+      .agent-trigger { grid-template-columns: auto 46px 1fr auto; padding: 18px; gap: 12px; }
+      .agent-icon-wrap { width: 46px; height: 46px; border-radius: 14px; }
+      .agent-num { font-size: 34px; }
+      .agent-name { font-size: 17px; }
+      .agent-body { padding: 0 18px 20px; }
+      .metric-can { border-radius: 22px; }
+      .can-score { font-size: 86px; }
+      .metric-grid, .mini-stat-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; gap: 5px; }
+      footer { flex-direction: column; align-items: flex-start; padding: 28px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav>
+      <a class="nav-brand" href="https://github.com/emcdo411/tcp-commerce-discovery" target="_blank" rel="noopener">
+        <div class="brand-mark">EF</div>
+        <div class="brand-copy">
+          <strong>Epoch Frameworks LLC</strong>
+          <span>TCP Commerce · Agent Intelligence Stack</span>
+        </div>
+      </a>
+      <a class="nav-cta" href="mailto:erwin.mcdonald@outlook.com?subject=TCP%20Commerce%20AI%20Engagement%20%E2%80%94%20Initial%20Conversation">
+        Request Conversation
+      </a>
+    </nav>
+
+    <section class="hero">
+      <div>
+        <p class="hero-eyebrow fade-up">External Signal Layer · tcp-commerce-discovery</p>
+        <h1 class="hero-title fade-up d1">Commerce Needs<br><span>Performance AI</span></h1>
+        <p class="hero-sub fade-up d2">Five agent scenarios for intelligence-enabled commerce operations, styled as a high-output performance stack: faster decisions, stronger client value, less manual drag, and a service model that looks more like an operating advantage than a task list.</p>
+        <div class="badge-row fade-up d3">
+          <span class="badge hot">AI Readiness: 65 / 100</span>
+          <span class="badge">Current Adoption: 18 / 100</span>
+          <span class="badge">Leverage Points: 5</span>
+          <span class="badge">Signal Layer: External Only</span>
+        </div>
+      </div>
+
+      <aside class="metric-can fade-up d2" aria-label="Agent intelligence performance metrics">
+        <div class="can-top">
+          <span>Agent Intelligence Formula</span>
+          <div class="live-dot">Signal Active</div>
+        </div>
+        <div class="can-hero">
+          <div class="can-score" id="scoreNum">65</div>
+          <p class="can-label">External AI Readiness Score</p>
+          <p class="can-copy">TCP Commerce shows enough operational surface area to justify a structured diagnostic. The gap is not effort. The gap is turning marketplace work into an intelligence layer.</p>
+          <div class="performance-bars">
+            <div class="bar-row"><span>Workflow Surface</span><div class="bar"><div class="fill" style="width:81%"></div></div><span>81</span></div>
+            <div class="bar-row"><span>Data Richness</span><div class="bar"><div class="fill" style="width:68%"></div></div><span>68</span></div>
+            <div class="bar-row"><span>Competitive Risk</span><div class="bar"><div class="fill" style="width:79%"></div></div><span>79</span></div>
+            <div class="bar-row"><span>AI Adoption</span><div class="bar"><div class="fill" style="width:18%; background:linear-gradient(90deg,var(--orange),var(--red)); box-shadow:0 0 18px rgba(255,138,29,.22);"></div></div><span>18</span></div>
+          </div>
+        </div>
+        <div class="mini-stat-grid">
+          <div class="mini-stat"><strong>5</strong><span>Agent scenarios</span></div>
+          <div class="mini-stat"><strong>3</strong><span>Sprint path</span></div>
+          <div class="mini-stat"><strong>1</strong><span>Discovery objective</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="section-wrap">
+      <p class="section-label">The meeting frame</p>
+      <div class="frame-quote fade-up">
+        <p>“I’m not coming in to sell generic AI. I’m looking for the workflow signals you already have, then identifying where an agent can reduce manual work, improve client value, or create pricing power.”</p>
+      </div>
+
+      <p class="section-label">Five agent scenarios</p>
+      <div class="agent-list" id="agentList"></div>
+
+      <p class="section-label">Recommended engagement structure</p>
+      <div class="sprint-grid">
+        <div class="sprint-card fade-up">
+          <p class="sprint-label">Sprint 1</p>
+          <p class="sprint-name">Operational Diagnostic</p>
+          <p class="sprint-desc">Workflow capture · friction mapping · analyst dependency · reporting structure review · data surface identification</p>
+        </div>
+        <div class="sprint-card fade-up d1">
+          <p class="sprint-label">Sprint 2</p>
+          <p class="sprint-name">Opportunity Prioritization</p>
+          <p class="sprint-desc">Value scoring · implementation feasibility · adoption resistance · governance risk · quick-win sequencing</p>
+        </div>
+        <div class="sprint-card fade-up d2">
+          <p class="sprint-label">Sprint 3</p>
+          <p class="sprint-name">AI Service Architecture</p>
+          <p class="sprint-desc">Intelligence systems · automation design · client-facing differentiation · governance enforcement · roadmap sequencing</p>
+        </div>
+      </div>
+
+      <p class="section-label">Positioning philosophy</p>
+      <div class="philosophy-block fade-up">
+        <p>This engagement is <strong>operationally grounded</strong>: no AI theater, no capability inflation. It is <strong>governance-aware</strong>: human oversight is built into every layer. It is <strong>workflow-first</strong>: AI follows process, not the reverse. It is <strong>implementation-disciplined</strong>: sprint-based, measurable, accountable. The goal is not to promise autonomous AI transformation. The goal is to identify where operational intelligence creates <strong>measurable movement</strong> inside workflows TCP Commerce already runs every day.</p>
+      </div>
+
+      <div class="divider"></div>
+    </div>
+
+    <footer>
+      <div class="footer-left">
+        <span>Epoch Frameworks LLC</span> · Fort Worth, TX<br>
+        DACR License v2.6 · McDonald (2026)<br>
+        External Signal Layer · Full Diagnostic Requires Working Engagement
+      </div>
+      <div class="footer-right">
+        <a class="footer-link" href="https://github.com/emcdo411/tcp-commerce-discovery" target="_blank" rel="noopener">
+          <i class="ti ti-brand-github" aria-hidden="true"></i> View Repo
+        </a>
+        <a class="footer-link" href="mailto:erwin.mcdonald@outlook.com?subject=TCP%20Commerce%20AI%20Engagement%20%E2%80%94%20Initial%20Conversation">
+          <i class="ti ti-mail" aria-hidden="true"></i> Contact
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const agents = [
+      {
+        num: '01',
+        name: 'Listing Intelligence Agent',
+        tagline: 'Titles · keywords · catalog enrichment · A/B variation generation',
+        entry: 'Easiest entry point',
+        icon: 'ti-list-search',
+        color: '#D9FF3F',
+        bg: 'rgba(217,255,63,0.13)',
+        glow: 'rgba(217,255,63,0.18)',
+        desc: 'AI-assisted optimization across title generation, keyword alignment, catalog enrichment, conversion-oriented copy, and A/B variation generation applied at scale across client catalogs without proportional analyst overhead. The repo identifies listing intelligence automation as the first leverage hypothesis: highest surface area, lowest adoption friction.',
+        capabilities: ['Title generation', 'Keyword alignment', 'Catalog enrichment', 'Copy optimization', 'A/B variation'],
+        question: 'Where does listing optimization currently depend on manual judgment, repeated copy work, or account-manager memory?'
+      },
+      {
+        num: '02',
+        name: 'Competitive Signal Agent',
+        tagline: 'Pricing · buy-box · category shifts · marketplace compression',
+        entry: 'Strong discovery lane',
+        icon: 'ti-radar',
+        color: '#00A3FF',
+        bg: 'rgba(0,163,255,0.13)',
+        glow: 'rgba(0,163,255,0.18)',
+        desc: 'Real-time monitoring of competitor pricing movement, listing volatility, category ranking shifts, buy-box dynamics, and market compression indicators surfaced as actionable client-facing intelligence. This agent turns market movement into early warning signal.',
+        capabilities: ['Pricing movement', 'Buy-box dynamics', 'Listing volatility', 'Category shifts', 'Compression signals'],
+        question: 'How do you currently know when a competitor changes pricing, ranking, listing structure, or buy-box position before it affects the client?'
+      },
+      {
+        num: '03',
+        name: 'Client Reporting Intelligence Agent',
+        tagline: 'Executive narratives · anomaly detection · automated summaries',
+        entry: 'High analyst hour savings',
+        icon: 'ti-report-analytics',
+        color: '#FF8A1D',
+        bg: 'rgba(255,138,29,0.13)',
+        glow: 'rgba(255,138,29,0.18)',
+        desc: 'Transformation of raw marketplace data into executive narratives, anomaly detection, trend summaries, operational recommendations, and automated client-facing intelligence without burning analyst hours on formatting. This agent reclaims time and upgrades the client experience.',
+        capabilities: ['Executive narratives', 'Anomaly detection', 'Trend summaries', 'Auto recommendations', 'Client-ready output'],
+        question: 'How much time does your team spend explaining the data to clients versus actually acting on the data?'
+      },
+      {
+        num: '04',
+        name: 'Demand & Inventory Forecasting Agent',
+        tagline: 'Stockout risk · seasonality · fulfillment pressure · velocity',
+        entry: 'Client supply chain protection',
+        icon: 'ti-package',
+        color: '#FF3F8E',
+        bg: 'rgba(255,63,142,0.13)',
+        glow: 'rgba(255,63,142,0.18)',
+        desc: 'Operational visibility around stockout risk, seasonality patterns, fulfillment pressure, inventory velocity, and demand shifts, giving TCP Commerce a protective intelligence layer for client supply chains. This moves clients from surprise to preparation.',
+        capabilities: ['Stockout risk', 'Demand shifts', 'Seasonality signals', 'Fulfillment pressure', 'Inventory velocity'],
+        question: 'Where do clients usually get surprised: stockouts, overstock, demand changes, fulfillment delays, or margin compression?'
+      },
+      {
+        num: '05',
+        name: 'AI Service Differentiation Agent',
+        tagline: 'Pricing power · churn reduction · intelligence-enabled moat',
+        entry: 'Strategic, highest leverage',
+        icon: 'ti-crown',
+        color: '#8C5CFF',
+        bg: 'rgba(140,92,255,0.13)',
+        glow: 'rgba(140,92,255,0.18)',
+        desc: 'Repositioning TCP Commerce from marketplace execution provider to intelligence-enabled commerce operations partner, creating pricing power, reducing churn, and building a moat that execution-only competitors cannot cross. This is where the engagement lands, not where it opens.',
+        capabilities: ['Pricing power', 'Churn reduction', 'Partner positioning', 'Intelligence moat', 'Service differentiation'],
+        question: 'If your clients saw you as an intelligence partner instead of just an execution partner, what would you be able to charge more for?'
+      }
+    ];
+
+    function buildCards() {
+      const list = document.getElementById('agentList');
+      agents.forEach((a, i) => {
+        const card = document.createElement('div');
+        card.className = 'agent-card fade-up';
+        card.style.setProperty('--cardColor', a.color);
+        card.style.setProperty('--cardBg', a.bg);
+        card.style.setProperty('--cardGlow', a.glow);
+        card.setAttribute('role', 'region');
+        card.setAttribute('aria-label', a.name);
+        card.innerHTML = `
+          <button class="agent-trigger" aria-expanded="false" aria-controls="body-${i}" onclick="toggle(${i})">
+            <span class="agent-num">${a.num}</span>
+            <div class="agent-icon-wrap">
+              <i class="ti ${a.icon}" aria-hidden="true"></i>
+            </div>
+            <div class="agent-title-block">
+              <p class="agent-name">${a.name}</p>
+              <p class="agent-tagline">${a.tagline}</p>
+            </div>
+            <i class="ti ti-chevron-down agent-chev" aria-hidden="true"></i>
+          </button>
+          <div class="agent-body" id="body-${i}">
+            <span class="entry-chip">
+              <i class="ti ti-bolt" style="font-size:11px;" aria-hidden="true"></i>
+              ${a.entry}
+            </span>
+            <p class="body-label">What this agent does</p>
+            <p class="body-desc">${a.desc}</p>
+            <p class="body-label">Capability surface</p>
+            <div class="cap-pills">
+              ${a.capabilities.map(cap => `<span class="cap-pill">${cap}</span>`).join('')}
+            </div>
+            <p class="body-label">Discovery question for Wednesday</p>
+            <div class="q-block">
+              <p class="q-sublabel">Ask this</p>
+              <p class="q-text">“${a.question}”</p>
+            </div>
+          </div>
+        `;
+        list.appendChild(card);
+      });
+      const first = document.querySelector('.agent-card');
+      if (first) {
+        first.classList.add('open');
+        first.querySelector('.agent-trigger').setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function toggle(i) {
+      const cards = document.querySelectorAll('.agent-card');
+      const card = cards[i];
+      const btn = card.querySelector('.agent-trigger');
+      const isOpen = card.classList.contains('open');
+      cards.forEach((c) => {
+        c.classList.remove('open');
+        c.querySelector('.agent-trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function animateScore(target, duration) {
+      const el = document.getElementById('scoreNum');
+      if (!el) return;
+      const startTime = performance.now();
+      function step(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    buildCards();
+    window.addEventListener('load', () => animateScore(65, 1200));
+  </script>
+</body>
+</html>
