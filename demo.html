@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>eBay MCP Intelligence Agent</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 40px;
+  color: #111827;
+}
+.agent-wrap {
+  max-width: 1100px;
+  margin: auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.agent-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+.agent-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: #1B5E3B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.agent-logo i {
+  color: white;
+  font-size: 28px;
+}
+.agent-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+.agent-sub {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+}
+.status-pill {
+  margin-left: auto;
+  background: #E1F5EE;
+  color: #0F6E56;
+  border: 1px solid #5DCAA5;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.input-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.scan-input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+}
+.scan-btn {
+  background: #1B5E3B;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.quick-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.quick-btn {
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.metric-card {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 18px;
+}
+.metric-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+.metric-val {
+  font-size: 28px;
+  font-weight: 700;
+}
+.green { color: #0F6E56; }
+.amber { color: #B45309; }
+.red { color: #B91C1C; }
+.section-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.listing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 28px;
+}
+.listing-table th,
+.listing-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+.intel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.intel-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+}
+.intel-card-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+.intel-card-body {
+  line-height: 1.7;
+}
+.action-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.action-btn {
+  border-radius: 10px;
+  padding: 12px 18px;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+}
+.action-btn.primary {
+  background: #1B5E3B;
+  color: white;
+  border: none;
+}
+.agent-output {
+  margin-top: 22px;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 18px;
+  background: #f9fafb;
+}
+.output-kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+.output-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827;
+}
+.output-body {
+  line-height: 1.7;
+  color: #374151;
+}
+</style>
+</head>
+<body>
+<div class="agent-wrap">
+  <div class="agent-header">
+    <div class="agent-logo"><i class="ti ti-brand-ebay"></i></div>
+    <div>
+      <p class="agent-title">eBay MCP Intelligence Agent</p>
+      <p class="agent-sub">Agent 01 · Epoch Frameworks LLC · TCP Commerce</p>
+    </div>
+    <div class="status-pill">MCP LIVE</div>
+  </div>
+
+  <div class="input-row">
+    <input class="scan-input" placeholder="Enter UPC, barcode, or product name..." value="Apple AirPods Pro" />
+    <button class="scan-btn">Scan</button>
+  </div>
+
+  <div class="quick-row">
+    <button class="quick-btn">194252916398</button>
+    <button class="quick-btn">Dewalt 20V drill</button>
+    <button class="quick-btn">Apple AirPods Pro</button>
+    <button class="quick-btn">Nike Air Max 90</button>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Avg sell price</div>
+      <div class="metric-val green">$178.60</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Price floor</div>
+      <div class="metric-val">$139.00</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Price ceiling</div>
+      <div class="metric-val">$229.99</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Est. margin</div>
+      <div class="metric-val green">31%</div>
+    </div>
+  </div>
+
+  <div class="section-label">Active listings sample</div>
+  <table class="listing-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Condition</th>
+        <th>Sold / Active</th>
+        <th>Shipping</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Apple AirPods Pro 2nd Gen MagSafe -- New</td>
+        <td>BIN</td>
+        <td>$189.99</td>
+        <td>New</td>
+        <td>Sold 31</td>
+        <td>Free</td>
+      </tr>
+      <tr>
+        <td>AirPods Pro 2 -- Open Box No Case</td>
+        <td>Auction</td>
+        <td>$139.00</td>
+        <td>Used</td>
+        <td>Active</td>
+        <td>Free</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="intel-grid">
+    <div class="intel-card">
+      <div class="intel-card-title">Price Intelligence</div>
+      <div class="intel-card-body">
+        USB-C model commands premium over Lightning. Sealed USB-C average $222 versus Lightning sealed $194.
+      </div>
+    </div>
+
+    <div class="intel-card">
+      <div class="intel-card-title">Risk Signals</div>
+      <div class="intel-card-body">
+        Counterfeit alert elevated. AirPods Pro is a top counterfeit electronics category requiring authentication validation.
+      </div>
+    </div>
+
+    <div class="intel-card">
+      <div class="intel-card-title">Pallet Analysis</div>
+      <div class="intel-card-body">
+        At $90/unit acquisition, 12-unit lot projects estimated net of $1,680 after fees and shipping.
+      </div>
+    </div>
+
+    <div class="intel-card">
+      <div class="intel-card-title">Agent Recommendation</div>
+      <div class="intel-card-body">
+        BUY signal. Strong ROI and sell velocity on sealed units. USB-C model preferred.
+      </div>
+    </div>
+  </div>
+
+  <div class="action-row">
+    <button class="action-btn primary" data-action="pallet">Pallet Profit Analysis</button>
+    <button class="action-btn" data-action="fees">eBay Fee Breakdown</button>
+    <button class="action-btn" data-action="threats">Buy Box Threats</button>
+  </div>
+
+  <div class="agent-output" id="agentOutput">
+    <div class="output-kicker">Agent output</div>
+    <div class="output-title">Ready for intelligence action</div>
+    <div class="output-body">Select one of the action buttons above to simulate the next MCP workflow layer.</div>
+  </div>
+</div>
+<script>
+const productData = {
+  airpods: {
+    avg: '$178.60',
+    floor: '$139.00',
+    ceiling: '$229.99',
+    margin: '31%',
+    title1: 'Apple AirPods Pro 2nd Gen MagSafe -- New',
+    title2: 'AirPods Pro 2 -- Open Box No Case',
+    intel1: 'USB-C model commands premium over Lightning. Sealed USB-C average $222 versus Lightning sealed $194.',
+    intel2: 'Counterfeit alert elevated. AirPods Pro is a top counterfeit electronics category requiring authentication validation.',
+    intel3: 'At $90/unit acquisition, 12-unit lot projects estimated net of $1,680 after fees and shipping.',
+    intel4: 'BUY signal. Strong ROI and sell velocity on sealed units. USB-C model preferred.'
+  },
+  dewalt: {
+    avg: '$94.20',
+    floor: '$62.00',
+    ceiling: '$149.00',
+    margin: '28%',
+    title1: 'DEWALT 20V MAX Drill/Driver Kit DCD777C2',
+    title2: 'Dewalt DCD771C2 Compact Drill -- Used',
+    intel1: 'Combo kits outperform drill-only listings by nearly 40% across current eBay inventory.',
+    intel2: 'Model fragmentation risk elevated. Incorrect SKU mapping increases return probability.',
+    intel3: '18-unit mixed pallet projects estimated net margin near $1,390 after fees and shipping.',
+    intel4: 'AUGMENT signal. Recommend prioritizing combo kits and avoiding tool-only listings.'
+  }
+};
+
+const scanBtn = document.querySelector('.scan-btn');
+const input = document.querySelector('.scan-input');
+const quickBtns = document.querySelectorAll('.quick-btn');
+const metricVals = document.querySelectorAll('.metric-val');
+const tableRows = document.querySelectorAll('tbody tr');
+const intelBodies = document.querySelectorAll('.intel-card-body');
+const actionBtns = document.querySelectorAll('.action-btn');
+
+function loadData(type) {
+  const data = productData[type];
+  metricVals[0].textContent = data.avg;
+  metricVals[1].textContent = data.floor;
+  metricVals[2].textContent = data.ceiling;
+  metricVals[3].textContent = data.margin;
+
+  tableRows[0].children[0].textContent = data.title1;
+  tableRows[1].children[0].textContent = data.title2;
+
+  intelBodies[0].textContent = data.intel1;
+  intelBodies[1].textContent = data.intel2;
+  intelBodies[2].textContent = data.intel3;
+  intelBodies[3].textContent = data.intel4;
+}
+
+scanBtn.addEventListener('click', () => {
+  const value = input.value.toLowerCase();
+  if (value.includes('dewalt')) {
+    loadData('dewalt');
+  } else {
+    loadData('airpods');
+  }
+});
+
+quickBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    input.value = btn.textContent;
+    if (btn.textContent.toLowerCase().includes('dewalt')) {
+      loadData('dewalt');
+    } else {
+      loadData('airpods');
+    }
+  });
+});
+
+const agentOutput = document.getElementById('agentOutput');
+
+const actionResponses = {
+  pallet: {
+    title: 'Pallet Profit Analysis Running',
+    body: 'The agent is modeling acquisition cost, projected resale value, eBay fees, shipping exposure, return risk, and estimated net margin. Current recommendation: proceed only if verified acquisition cost preserves at least 25% net margin after platform fees.'
+  },
+  fees: {
+    title: 'eBay Fee Breakdown Generated',
+    body: 'The agent estimates final value fees, per-order transaction costs, promoted listing exposure, shipping absorption, and category-specific margin compression. Current readout: fee exposure is manageable, but margin becomes sensitive below the current price floor.'
+  },
+  threats: {
+    title: 'Buy Box Threat Scan Complete',
+    body: 'The agent is comparing active listings, seller velocity, fulfillment terms, shipping price, condition quality, and pricing pressure. Current threat level: moderate. The largest risk is undercutting from high-volume sellers with free shipping.'
+  }
+};
+
+actionBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const action = btn.dataset.action;
+    const response = actionResponses[action];
+    agentOutput.querySelector('.output-title').textContent = response.title;
+    agentOutput.querySelector('.output-body').textContent = response.body;
+  });
+});
+</script>
+</body>
+</html>
